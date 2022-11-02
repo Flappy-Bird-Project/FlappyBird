@@ -10,14 +10,14 @@ Objectifs :
 
 Le but de ce projet est de développer sa propre version du jeu Flappy Bird
 Les étapes nécessaires à son développement sont les suivantes :
-> Créer une interface de jeu
-> Afficher le personnage (oiseau)
-> Le faire sauter
-> Afficher les obstacles(tuyau)
-> Les faire bouger de droite à gauche
-> Détecter la collision entre l’oiseau et les obstacles
-> Générer aléatoirement les obstacles devant le joueur
-> Arrêter la partie quand le joueur touche un obstacle
+> Créer une interface de jeu/
+> Afficher le personnage (oiseau)/
+> Le faire sauter/
+> Afficher les obstacles(tuyau)/
+> Les faire bouger de droite à gauche/
+> Détecter la collision entre l’oiseau et les obstacles/
+> Générer aléatoirement les obstacles devant le joueur/
+> Arrêter la partie quand le joueur touche un obstacle/
 	
 Une fois ces fonctionnalités réalisées, des fonctionnalités bonus peuvent être ajoutées :
 ajout de son 
