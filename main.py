@@ -23,13 +23,13 @@ background = pygame.image.load("background.png").convert()
 background = pygame.transform.scale2x(background)
 
 while True:
-    if y<=530:
+    if y<=530: # Simule la gravité
         y += speed
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+        if event.type == pygame.QUIT: # Ferme la fenetre si on appuie sur la croix
             pygame.quit()
             sys.exit()
-        # Si la barre espace est pressée alors
+        # Si la barre espace est pressée alors le personnage saute
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE and y>=0:
                 y -= vel
