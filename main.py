@@ -27,13 +27,15 @@ def MainGame(): # -> fonction principale
     background = pygame.transform.scale2x(background) # -> agrandir celle-ci de 2x
     gameOverScreen = pygame.image.load("GameOver.png").convert_alpha() # -> telecharger l'image de fond quand on a perdu
     gameOverBg = pygame.image.load("backgroundLose.jpg").convert()# ->idem
-
+  
+    #bird = pygame.image.load("flappyBird.png").convert_alpha()
+  
     pipe1 = pygame.image.load("TopSprite.png").convert_alpha() # -> telecharger le tuyau d'en haut
     pipe1 = pygame.transform.scale2x(pipe1)
     pipe2 = pygame.image.load("BottomePipe.png").convert_alpha() # ->telecharger le tuyau d'en bas
     pipe2 = pygame.transform.scale2x(pipe2)
 
-    pipeX = 200 # -> coordonée X des tuyaux
+    pipeX = 600 # -> coordonée X des tuyaux
 
     pipeY = random.randint(-230,0) # -> coordonnée Y du tuyau d'en haut
     pipeY1 = pipeY + 450 # -> coordonnée Y du tuyau d'en bas
@@ -58,6 +60,7 @@ def MainGame(): # -> fonction principale
                     gameOver = False
                     pygame.init()
         
+        
         screen.blit(background, (0,0)) # -> affiche le fond
 
         if pipeX < -80: # -> Si les tuyaux sortent de l'ecran, le déplacer devant l'oiseau
@@ -69,8 +72,8 @@ def MainGame(): # -> fonction principale
         
         screen.blit(pipe1, (pipeX, pipeY)) # -> afficher les premiers tuyaux
         screen.blit(pipe2, (pipeX, pipeY1))
-
-        pygame.draw.rect(screen, (235,255,0), (x, y, width, height)) # -> dessine l'oiseau
+        pygame.draw.rect(screen, (235,255,0), (x, y, width, height))
+        
 
         if x == pipeX and pipeY < y < pipeY1 and gameOver == False: # -> Si l'oiseau est entre les 2 tuyaux ajouter 1 au score
             score.append(1)
@@ -83,8 +86,12 @@ def MainGame(): # -> fonction principale
                 
         if gameOver == True: # -> Si le jeu est perdu, afficher l'ecran de fin
             screen.blit(gameOverBg, (0,0))
-            screen.blit(gameOverScreen, (0,0))  
-
+            screen.blit(gameOverScreen, (0,0))
+            if event.type == pygame.KEYDOWN:
+              if event.key == pygame.K_RETURN:
+                MainGame()
+              
+        
         pygame.display.flip()
         clock.tick(fps) # -> met les fps a 60
 
