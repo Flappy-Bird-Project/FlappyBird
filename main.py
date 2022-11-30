@@ -9,12 +9,12 @@ pygame.display.set_caption("Flappy Bird") # -> Nom de la fenêtre
 
 
 def MainGame(): # -> fonction principale
-    x = 100 # -> coordonnées de l'oiseau
-    y = 250 # ->pareil
+    x = 100 # -> coordonnées x de l'oiseau
+    y = 250 # ->coordonnées y de l'oiseau
     gameOver = False  
 
-    width = 20 # -> taille de l'oiseau
-    height = 20
+    width = 20 # -> largueur de l'oiseau
+    height = 20 # -> hauteur de l'oiseau
 
     vel = 100 # -> "velocité" simulée
     speed = 4 # -> vitesse de l'oiseau
@@ -26,7 +26,7 @@ def MainGame(): # -> fonction principale
     background = pygame.image.load("background.png").convert() # -> telecharger l'image de fond
     background = pygame.transform.scale2x(background) # -> agrandir celle-ci de 2x
     gameOverScreen = pygame.image.load("GameOver.png").convert_alpha() # -> telecharger l'image de fond quand on a perdu
-    gameOverBg = pygame.image.load("backgroundLose.jpg").convert()# ->idem
+    gameOverBg = pygame.image.load("backgroundLose.jpg").convert()# ->agrandir celle-ci de 2x
   
     #bird = pygame.image.load("flappyBird.png").convert_alpha()
   
@@ -38,11 +38,11 @@ def MainGame(): # -> fonction principale
     pipeX = 600 # -> coordonée X des tuyaux
 
     pipeY = random.randint(-230,0) # -> coordonnée Y du tuyau d'en haut
-    pipeY1 = pipeY + 450 # -> coordonnée Y du tuyau d'en bas
+    pipeY1 = pipeY + 450 # -> coordonnée Y du tuyau d'en bas en fonction des coordonnées y du tuyau du haut
     
-    while True: # -> permet de creer un fenetre et de la laisser ouverte
+    while True: # -> permet de creer une fenetre et de la laisser ouverte
 
-        if pipeX > -100 and gameOver == False: # -> Condition qui fait bouger les tuyau de droite a gauche (effet d'optique)
+        if pipeX > -100 and gameOver == False: # -> Condition qui fait bouger les tuyaux de droite a gauche (effet d'optique)
             pipeX -= 2
 
         if y <= 530: # -> Simule la gravité
@@ -61,9 +61,9 @@ def MainGame(): # -> fonction principale
                     pygame.init()
         
         
-        screen.blit(background, (0,0)) # -> affiche le fond
+        screen.blit(background, (0,0)) # -> affiche l'image de fond
 
-        if pipeX < -80: # -> Si les tuyaux sortent de l'ecran, le déplacer devant l'oiseau
+        if pipeX < -80: # -> Si les tuyaux sortent de l'ecran (gauche), le déplacer devant l'oiseau (droite)
             pipeX = 300
             pipeY = random.randint(-230,0)
             pipeY1 = pipeY + 450
@@ -75,7 +75,7 @@ def MainGame(): # -> fonction principale
         pygame.draw.rect(screen, (235,255,0), (x, y, width, height))
         
 
-        if x == pipeX and pipeY < y < pipeY1 and gameOver == False: # -> Si l'oiseau est entre les 2 tuyaux ajouter 1 au score
+        if x == pipeX and pipeY < y < pipeY1 and gameOver == False: # -> Si l'oiseau est entre les 2 tuyaux, ajouter 1 au score
             score.append(1)
             print(len(score))
 
@@ -93,6 +93,6 @@ def MainGame(): # -> fonction principale
               
         
         pygame.display.flip()
-        clock.tick(fps) # -> met les fps a 60
+        clock.tick(fps) # -> met les fps à 60
 
 MainGame()
